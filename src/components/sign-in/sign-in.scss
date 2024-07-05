@@ -1,0 +1,48 @@
+.sign-in-box {
+    width: 50vw;
+    height: auto;
+    padding: 14px;
+    // background-color: yellow;
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    border: 0.5px solid gray;
+    border-radius: 14px;
+    .sign-in-container {
+      width: 50%;
+      height: 100%;
+      // background-color: red;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      .sign-in-form {
+        width: 70%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
+        input{
+          font-size: 15px;
+        }
+  
+        .divider-box{
+          width: 100%;
+          height: inherit;
+          padding: 6px;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+  
+          .divider{
+            width: 20%;
+            height: 0.5px;
+            background-color: rgb(203, 34, 34);
+          }
+        }
+      }
+    }
+  }
+  
