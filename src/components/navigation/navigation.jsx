@@ -10,7 +10,8 @@ import DehazeIcon from "@mui/icons-material/Dehaze";
 import CloseIcon from "@mui/icons-material/Close";
 
 const Navigation = () => {
-  const carts = useSelector((state) => state.carts);
+  const carts = useSelector((state) => state.carts.carts);
+  console.log(carts);
   const count = carts.reduce((total, cart) => total + cart.quantity, 0);
 
   const [width, setwidth] = useState(window.innerWidth);

@@ -1,10 +1,10 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { addDoc, collection, getFirestore } from "firebase/firestore";
+import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -23,9 +23,31 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 
-export const createAuth = async(userauth)=>{
-  
-}
+
+export const onAuthStateChanged_Listener = (callback) =>
+  onAuthStateChanged(auth, callback);
 
 // const dataRef = {name:'suman', value:"123456"}
 // export const createdb = await addDoc(collection(db,"user"),dataRef)
+export const createUserFromAuth = async (userauth) => {
+  const userReferance = doc(db, "users", userauth.uid);
+  const userSnapshot = await getDoc(userReferance);
+
+
+  if (!userSnapshot.exists()) {
+    const { displayName, email } = userauth;
+    const createDate = Date.now();
+    console.log("create", userauth);
+
+    try {
+      await setDoc(userReferance, {
+        email,
+        createDate,
+        displayName
+      });
+    } catch (error) {
+      console.log("error", error.message);
+    }
+  }
+  return userReferance;
+};

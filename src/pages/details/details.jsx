@@ -1,13 +1,13 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { addCart } from "../../store/slice";
+import { additemtoCart } from "../../store/slice";
 import "./details.scss";
 import StarHalfIcon from "@mui/icons-material/StarHalf";
 
 const Details = () => {
   const params = useParams();
-  const product = useSelector((state) => state.products);
+  const product = useSelector((state) => state.carts.products);
   const dispatch = useDispatch();
 
   const addcartEvent = (item) => {
@@ -19,7 +19,7 @@ const Details = () => {
       price: price,
     };
 
-    dispatch(addCart(cartItem));
+    dispatch(additemtoCart(cartItem));
     console.log("dispatch cart");
   };
   return (

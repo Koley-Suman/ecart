@@ -7,7 +7,7 @@ import { IconButton } from "@mui/material";
 
 const Categoripage = () => {
   const params = useParams();
-  const products = useSelector((state) => state.products);
+  const products = useSelector((state) => state.carts.products);
   const navigate = useNavigate();
   console.log(params);
   console.log(products);

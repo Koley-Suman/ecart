@@ -1,13 +1,12 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import React, { useState } from "react";
-import { auth, db } from "../../auth/auth";
-import { addDoc, collection } from "firebase/firestore";
+import { auth, createUserFromAuth, db } from "../../auth/auth";
+import { addDoc, collection, doc, getDoc } from "firebase/firestore";
 import { Alert, Button, TextField } from "@mui/material";
 
 import "./signup.scss";
 import GoogleIcon from "@mui/icons-material/Google";
 import { Link } from "react-router-dom";
-
 
 const Signup = () => {
   const initial = {
@@ -32,37 +31,23 @@ const Signup = () => {
     } else if (!email || !password) {
       return;
     } else {
-      const { user } = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      console.log(user);
-
-      // .then((userCredential) => {
-      //   // Signed up
-      //   const user = userCredential.user;
-      //   console.log(user);
-      //   // ...
-      // })
-      // catch((error) => {
-      //   const errorCode = error.code;
-      //   const errorMessage = error.message;
-      //   console.log(errorCode);
-      //   console.log(errorMessage);
-      //   // ..
-      // });
-      resetinput();
-
       try {
-        const docRef = await addDoc(collection(db, "users"), {
-          email: cruser.email,
-          password: cruser.password,
-          date: Date.now(),
+        const { user } = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        await updateProfile(user, {
+          displayName: username,
         });
-        console.log("Document written with ID: ", docRef.id);
-      } catch (e) {
-        console.error("Error adding document: ", e);
+        await createUserFromAuth(user);
+        resetinput();
+      } catch (error) {
+        if (error.code === "auth/email-already-in-use") {
+          alert("user already have an account.");
+        } else {
+          console.log("user error:", error);
+        }
       }
     }
   };
@@ -114,7 +99,7 @@ const Signup = () => {
             variant="standard"
             fullWidth
           />
-          <Button  type="submit" variant="contained">
+          <Button type="submit" variant="contained">
             SIGN UP
           </Button>
           <div className="divider-box">
@@ -122,14 +107,12 @@ const Signup = () => {
             OR
             <div className="divider"></div>
           </div>
-          <Button
-            startIcon={<GoogleIcon />}
-            fullWidth
-            variant="contained"
-          >
+          <Button startIcon={<GoogleIcon />} fullWidth variant="contained">
             GOOGLE SIGN IN
           </Button>
-          <p>Already have an account <Link to='/authentication'>sign in</Link></p>
+          <p>
+            Already have an account <Link to="/authentication">sign in</Link>
+          </p>
         </form>
       </div>
     </div>
