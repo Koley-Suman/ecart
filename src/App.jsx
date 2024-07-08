@@ -12,6 +12,9 @@ import { useEffect } from "react";
 import { setCurrentUser } from "./store/user-slice";
 
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged_Listener } from "./auth/auth";
+import { fetchCarts } from "./store/slice";
+import Cartcomponent from "./components/cart.component/cart.component";
 function App() {
   const catagoris = [
     {
@@ -90,12 +93,21 @@ function App() {
     return unsubscribe;
   }, []);
   
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged_Listener((user) => {
+      if (user) {
+        dispatch(fetchCarts(user));
+      }
+    });
+    return unsubscribe;
+  }, [dispatch]);
+
   return (
     <>
       <Routes>
         <Route path="/" element={<Navigation />}>
           <Route index element={<Homepage categori={catagoris} />} />
-          <Route path="cart" element={<Cart />} />
+          <Route path="cart" element={<Cartcomponent />} />
           <Route path="categori/:categori/:productId" element={<Details />} />
           <Route path="categori/:categori" element={<Categoripage />} />
           <Route path="authentication/*" element={<Authentication />} />

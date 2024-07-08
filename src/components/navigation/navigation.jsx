@@ -40,7 +40,7 @@ const Navigation = () => {
           <Link to="/">HOME</Link>
         </li>
         <li>
-          <Link to="authentication">SIGN UP</Link>
+          <Link to="authentication">SIGN IN</Link>
         </li>
         <li>
           <Link to="cart">ORDER</Link>
@@ -73,7 +73,7 @@ const Navigation = () => {
               <Link to="/">HOME</Link>
             </li>
             <li>
-              <Link to="authentication">SIGN UP</Link>
+              <Link to="authentication">SIGN IN</Link>
             </li>
             <li>
               <Link to="cart">

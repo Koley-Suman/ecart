@@ -1,70 +1,161 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { additemtoCart } from "../../store/slice";
 import "./details.scss";
 import StarHalfIcon from "@mui/icons-material/StarHalf";
+import ShoppingCartSharpIcon from "@mui/icons-material/ShoppingCartSharp";
 
 const Details = () => {
-  const params = useParams();
   const product = useSelector((state) => state.carts.products);
-  const dispatch = useDispatch();
+  const carts = useSelector((state) => state.carts.carts);
+  const params = useParams();
+  const Navigate = useNavigate();
 
-  const addcartEvent = (item) => {
-    const { id, name, imageUrl, price } = item;
-    const cartItem = {
-      id: id,
-      name: name,
-      imageUrl: imageUrl,
-      price: price,
+  console.log(carts);
+  console.log(params);
+
+  let Initial_image;
+
+  {
+    product.map((e) => {
+      if (e.title == params.categori) {
+        return e.items.map((item) => {
+          if (item.id == params.productId) {
+            Initial_image = item.imageUrl;
+            console.log(item.id);
+          }
+        });
+      }
+    });
+
+    const [iscart, setIscart] = useState(false);
+
+    setTimeout(() => {
+      carts.map((e) => {
+        if (e.id == params.productId) {
+          setIscart(true);
+        }
+      });
+    }, "1000");
+
+    
+
+    const [image, setImage] = useState(Initial_image);
+    const [border, setBorder] = useState(null);
+
+    const imageHandel = (image, index) => {
+      setImage(image);
+      setBorder(index);
+    };
+    const dispatch = useDispatch();
+
+    const addcartEvent = (item) => {
+      const { id, name, imageUrl, price } = item;
+      const cartItem = {
+        id: id,
+        name: name,
+        imageUrl: imageUrl,
+        price: price,
+        categori:params.categori
+      };
+      if (iscart==true) {
+        Navigate("/cart");
+      }
+      dispatch(additemtoCart(cartItem));
     };
 
-    dispatch(additemtoCart(cartItem));
-    console.log("dispatch cart");
-  };
-  return (
-    <div className="details_container">
-      {product.map((e) => {
-        if (e.title == params.categori) {
-          console.log(e);
-          return e.items.map((item) => {
-            if (item.id == params.productId) {
-              return (
-                <div key={item.id} className="details_box">
-                  <div className="picture">
-                    <div className="image">
-                      
-                    </div>
-                    <button onClick={() => addcartEvent(item)}>
-                      Add to cart
-                    </button>
-                  </div>
-                  <div className="details">
-                    <h2>{item.name}</h2>
-                    <div className="rating">
-                      <div className="icon_box">
-                        <p>4.5</p>
-                        <StarHalfIcon />
+    return (
+      <div className="details_container">
+        {product.map((e) => {
+          if (e.title == params.categori) {
+            console.log(e);
+            return e.items.map((item) => {
+              if (item.id == params.productId) {
+                return (
+                  <div key={item.id} className="details_box">
+                    <div className="picture">
+                      <div className="image_section">
+                        <div className="more_image">
+                          {item.details_image.map((e, index) => {
+                            return (
+                              <div
+                                className={`details_image_container ${
+                                  border === index ? "select_image" : null
+                                }`}
+                                onClick={() => imageHandel(e.image, index)}
+                                key={index}
+                              >
+                                <div
+                                  className="details_image"
+                                  style={{ backgroundImage: `url(${e.image})` }}
+                                ></div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                        <div
+                          className="image"
+                          style={{ backgroundImage: `url(${image})` }}
+                        ></div>
                       </div>
-                      <p style={{ marginLeft: "4px" }}>
-                        192 Ratings & 29 Reviews
-                      </p>
+
+                      <div
+                        className="button_container"
+                        onClick={() => addcartEvent(item)}
+                      >
+                        {iscart == false ? (
+                          <div className="button">
+                            <p>
+                              <ShoppingCartSharpIcon /> Add To Cart
+                            </p>
+                          </div>
+                        ) : (
+                          <div className="button">
+                            <p>
+                              <ShoppingCartSharpIcon /> Go To Cart
+                            </p>
+                          </div>
+                        )}
+                        
+                      </div>
                     </div>
-                    <h4 style={{color:"green",fontWeight:500}}>Best price</h4>
-                    <div className="price">
-                      <p>${item.price}</p>
-                      <p style={{textDecorationLine:"line-through",color:"gray"}} >$3499</p>
-                      <p style={{color:"green"}}>30% off</p>
+                    <div className="details">
+                      <h2>{item.name}</h2>
+                      <div className="rating">
+                        <div className="icon_box">
+                          <p>4.5</p>
+                          <StarHalfIcon />
+                        </div>
+                        <p style={{ marginLeft: "4px" }}>
+                          192 Ratings & 29 Reviews
+                        </p>
+                      </div>
+                      <h4 style={{ color: "green", fontWeight: 500 }}>
+                        Best price
+                      </h4>
+                      <div className="price">
+                        <p className="price_tag">${item.price}</p>
+                        <p
+                          style={{
+                            textDecorationLine: "line-through",
+                            color: "gray",
+                          }}
+                        >
+                          $3499
+                        </p>
+                        <p style={{ color: "green" }}>30% off</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            }
-          });
-        }
-      })}
-    </div>
-  );
+                );
+              }
+            });
+          }
+        })}
+      </div>
+    );
+  }
 };
 
 export default Details;
