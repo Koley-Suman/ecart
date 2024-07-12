@@ -2,3 +2,9 @@
     functions="netlify/functions"
     publish="dist"
 
+[dev]
+    publish = "dist"
+    command="npm run dev"
+
+[functions]
+    node_bundler = "esbuild"
