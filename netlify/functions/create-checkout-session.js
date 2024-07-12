@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const stripe = require("stripe")(`${process.env.STRIPE_SECRET_KEY}`)
 
-export async function handler(event) {
+exports.handler = async (event) => {
     console.log("request received: ", event.body);
     try {
         const { quantity } = JSON.parse(event.body);
@@ -31,7 +31,7 @@ export async function handler(event) {
             body: JSON.stringify({ url: session.url }),
         };
     } catch (error) {
-        console.log("error creating",error);
+        console.log("error creating", error);
 
         return {
             statusCode: 400,
