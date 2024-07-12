@@ -110,6 +110,9 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
+            h3{
+                color: rgb(168, 163, 163);
+            }
             .checkout_box{
                 width: 100%;
                 height: 80%;
@@ -147,7 +150,14 @@
                 align-items: center;
                 justify-content: center;
                 cursor: pointer;
+                color: white;
+                font-size: larger;
+                transition: all 0.2s ease;
+                &:hover{
+                    background-color: rgb(111, 4, 187);
+                }
             }
+            
         }
         
     }

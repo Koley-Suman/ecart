@@ -42,6 +42,7 @@ const Signup = () => {
         });
         await createUserFromAuth(user);
         resetinput();
+        
       } catch (error) {
         if (error.code === "auth/email-already-in-use") {
           alert("user already have an account.");

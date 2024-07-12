@@ -4,7 +4,7 @@ import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -51,3 +51,7 @@ export const createUserFromAuth = async (userauth) => {
   }
   return userReferance;
 };
+
+export const signOutUser = async () => await signOut(auth);
+export const onAuthStateChanged_Listeners = (callback) =>
+  onAuthStateChanged(auth, callback);

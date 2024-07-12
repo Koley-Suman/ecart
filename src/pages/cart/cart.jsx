@@ -13,6 +13,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import { Avatar, Divider, IconButton } from "@mui/material";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import { useNavigate } from "react-router-dom";
+import PaymentForm from "../../components/payment.component/payment.component";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -119,7 +120,7 @@ const Cart = () => {
               </div>
             </div>
               <div className="check_button">
-                <span>Place Order</span>
+                <PaymentForm />
               </div>
           </div>
         </div>

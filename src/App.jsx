@@ -15,6 +15,9 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { onAuthStateChanged_Listener } from "./auth/auth";
 import { fetchCarts } from "./store/slice";
 import Cartcomponent from "./components/cart.component/cart.component";
+import PaymentForm from "./components/payment.component/payment.component";
+import Payment_success from "./pages/payment_sucess/payment_success";
+import Payment_cancel from "./pages/payment_cancel/payment_cancel";
 function App() {
   const catagoris = [
     {
@@ -108,6 +111,9 @@ function App() {
         <Route path="/" element={<Navigation />}>
           <Route index element={<Homepage categori={catagoris} />} />
           <Route path="cart" element={<Cartcomponent />} />
+          <Route path="checkOut" element={<PaymentForm/>}/>
+          <Route path="success" element={<Payment_success/>}/>
+          <Route path="cancel" element={<Payment_cancel/>}/>
           <Route path="categori/:categori/:productId" element={<Details />} />
           <Route path="categori/:categori" element={<Categoripage />} />
           <Route path="authentication/*" element={<Authentication />} />

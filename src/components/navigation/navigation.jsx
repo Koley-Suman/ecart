@@ -2,15 +2,30 @@ import React, { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import "./navigation.scss";
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
-import { Avatar, Badge, Box, Drawer, IconButton } from "@mui/material";
+import {
+  Avatar,
+  Badge,
+  Box,
+  Button,
+  Drawer,
+  IconButton,
+  ListItemIcon,
+  Menu,
+  MenuItem,
+  Typography,
+} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useSelector } from "react-redux";
 import DehazeIcon from "@mui/icons-material/Dehaze";
-
+import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import CloseIcon from "@mui/icons-material/Close";
+import { deepOrange, deepPurple } from "@mui/material/colors";
+import { Logout } from "@mui/icons-material";
+import { signOutUser } from "../../auth/auth";
 
 const Navigation = () => {
   const carts = useSelector((state) => state.carts.carts);
+  const user = useSelector((state) => state.user.currentUser);
   console.log(carts);
   const count = carts.reduce((total, cart) => total + cart.quantity, 0);
 
@@ -29,6 +44,12 @@ const Navigation = () => {
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
+  const signOut =(popupState)=>{
+    signOutUser()
+    popupState.close
+  }
+
+
 
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
@@ -73,8 +94,40 @@ const Navigation = () => {
               <Link to="/">HOME</Link>
             </li>
             <li>
-              <Link to="authentication">SIGN IN</Link>
+              <Link to="/">ORDER</Link>
             </li>
+            {user ? (
+              <PopupState variant="popover" popupId="demo-popup-menu">
+                {(popupState) => (
+                  <>
+                    <Avatar
+                     sx={{ bgcolor: deepOrange[500],width:35,height:35 }}
+                      {...bindTrigger(popupState)}
+                    >
+                      {user.displayName.toUpperCase()[0]}
+                    </Avatar>
+                    <Menu {...bindMenu(popupState)}>
+                      {/* <MenuItem onClick={popupState.close}>Profile</MenuItem> */}
+                      {/* <MenuItem onClick={popupState.close}>My account</MenuItem> */}
+                      <MenuItem>
+                        <Typography variant="h6">{user.displayName}</Typography>
+                      </MenuItem>
+                      <MenuItem onClick={()=>signOut(popupState)}>
+                        <ListItemIcon>
+                          <Logout fontSize="small" />
+                        </ListItemIcon>
+                        Logout
+                      </MenuItem>
+                    </Menu>
+                  </>
+                )}
+              </PopupState>
+            ) : (
+              <li>
+                <Link to="authentication">SIGN IN</Link>
+              </li>
+            )}
+
             <li>
               <Link to="cart">
                 Cart
@@ -97,7 +150,18 @@ const Navigation = () => {
             <div className="logo">
               <h2>ECART</h2>
             </div>
-            <Avatar src="/broken-image.jpg" style={{ width: 30, height: 30 }} />
+            {user ? (
+              <Avatar sx={{ bgcolor: deepOrange[500],width:35,height:35 }} >
+                {user.displayName.toUpperCase()[0]}
+              </Avatar>
+            ) : (
+              <ul className="links">
+                <li>
+                  <Link to="/">HOME</Link>
+                </li>
+              </ul>
+            )}
+
             <Link to="cart">
               <IconButton aria-label="Example">
                 <Badge badgeContent={count} color="secondary">

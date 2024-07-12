@@ -5,9 +5,10 @@ import { Button, TextField } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
 
 import "./sign-in.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignIn = () => {
+  const navigate = useNavigate();
   const defaultform = {
     email: "",
     password: "",
@@ -20,13 +21,15 @@ const SignIn = () => {
   const resetinput = () => {
     setinputForm(defaultform);
   };
-  const signIn = () => {
+  const signIn = (e) => {
+    e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
         console.log(user);
-        // ...
+        
+        navigate('/');
+
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -46,7 +49,7 @@ const SignIn = () => {
             type="email"
             name="email"
             value={email}
-            id="outlined-basic"
+            id="1"
             label="Email"
             variant="standard"
             fullWidth
@@ -57,7 +60,7 @@ const SignIn = () => {
             type="password"
             name="password"
             value={password}
-            id="outlined-basic"
+            id="2"
             label="Password"
             variant="standard"
             fullWidth
