@@ -1,4 +1,4 @@
-[build]
+[run]
     functions="netlify/functions"
-    publish="build"
+    publish="run"
     
