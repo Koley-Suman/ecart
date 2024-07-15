@@ -64,7 +64,7 @@ const Navigation = () => {
           <Link to="authentication">SIGN IN</Link>
         </li>
         <li>
-          <Link to="cart">ORDER</Link>
+          <Link to="order">ORDER</Link>
         </li>
       </ul>
     </Box>
@@ -94,7 +94,7 @@ const Navigation = () => {
               <Link to="/">HOME</Link>
             </li>
             <li>
-              <Link to="/">ORDER</Link>
+              <Link to="order">ORDER</Link>
             </li>
             {user ? (
               <PopupState variant="popover" popupId="demo-popup-menu">

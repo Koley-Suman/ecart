@@ -9,7 +9,9 @@ import {
   doc,
   getDocs,
   query,
+  setDoc,
   updateDoc,
+  writeBatch,
 } from "firebase/firestore";
 import { db, onAuthStateChanged_Listener } from "../auth/auth";
 
@@ -108,17 +110,69 @@ export const removeCart = createAsyncThunk("cart/removeCart", async (carts) => {
   const cartsRef = carts;
   return cartsRef;
 });
+
+export const clearCart = createAsyncThunk('cart/clearCart', async () => {
+  onAuthStateChanged_Listener(async (user) => {
+    try {
+      if (user) {
+        const querysnapshot = await getDocs(
+          collection(db, "userCarts", user.uid, "carts")
+        );
+        for (let cartData of querysnapshot.docs) {
+          await deleteDoc(doc(db, "userCarts", user.uid, "carts", cartData.id));
+        }
+      }
+    }
+    catch (error) {
+      console.log(error.message);
+      return error.message
+    }
+
+  })
+})
+
+export const addOrder = createAsyncThunk('order/addOrder', async () => {
+  onAuthStateChanged_Listener(async (user) => {
+    try {
+      if (user) {
+        const querysnapshot = await getDocs(
+          collection(db, "userCarts", user.uid, "carts")
+        );
+        for (let cartdata of querysnapshot.docs) {
+          console.log("add order", cartdata.id);
+          const colleRef = doc(db, `userOrder/${user.uid}/orders`, cartdata.id);
+          await setDoc(colleRef, cartdata.data());
+
+        }
+      }
+    }
+    catch (error) {
+      console.log(error.message);
+      return error.message
+    }
+  })
+})
+export const fetchOrder = createAsyncThunk('order/fetchOrder', async (user) => {
+
+  const querysnapshot = await getDocs(
+    collection(db, "userOrder", user.uid, "orders")
+  );
+  console.log(querysnapshot.docs.map((e) => e.data()));
+  const orders = querysnapshot.docs.map((e) => e.data());
+  return orders;
+
+})
 const initialState = {
   products: product,
   carts: [],
+  order: []
 };
 
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
-  reducers: {
-   
-  },
+  reducers: {},
+
   extraReducers: (builder) => {
     builder
       .addCase(additemtoCart.fulfilled, (state, action) => {
@@ -162,7 +216,22 @@ export const cartSlice = createSlice({
         state.carts = state.carts.filter(
           (cart) => cart.id != action.payload.id
         );
-      });
+      })
+      .addCase(clearCart.fulfilled, (state, action) => {
+        state.carts = [];
+      })
+      .addCase(addOrder.fulfilled, () => {
+
+      })
+      .addCase(fetchOrder.fulfilled, (state, action) => {
+        state.orderLoading = false;
+        state.order = action.payload;
+      })
+      .addCase(fetchOrder.pending,(state,action)=>{
+        state.orderLoading = true;
+      })
+
+
   },
 });
 

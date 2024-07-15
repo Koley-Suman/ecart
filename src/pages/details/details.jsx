@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { additemtoCart } from "../../store/slice";
+import { additemtoCart, fetchCarts } from "../../store/slice";
 import "./details.scss";
 import StarHalfIcon from "@mui/icons-material/StarHalf";
 import ShoppingCartSharpIcon from "@mui/icons-material/ShoppingCartSharp";
+import { onAuthStateChanged_Listener } from "../../auth/auth";
 
 const Details = () => {
   const product = useSelector((state) => state.carts.products);
   const carts = useSelector((state) => state.carts.carts);
   const params = useParams();
   const Navigate = useNavigate();
+  const dispatch = useDispatch();
 
   console.log(carts);
   console.log(params);
@@ -39,8 +41,6 @@ const Details = () => {
       });
     }, "1000");
 
-    
-
     const [image, setImage] = useState(Initial_image);
     const [border, setBorder] = useState(null);
 
@@ -57,9 +57,9 @@ const Details = () => {
         name: name,
         imageUrl: imageUrl,
         price: price,
-        categori:params.categori
+        categori: params.categori,
       };
-      if (iscart==true) {
+      if (iscart == true) {
         Navigate("/cart");
       }
       dispatch(additemtoCart(cartItem));
@@ -117,17 +117,18 @@ const Details = () => {
                             </p>
                           </div>
                         )}
-                        
                       </div>
                     </div>
                     <div className="details">
-                      <h2>{item.name}</h2>
+                      <div className="name">
+                        <h2>{item.name}</h2>
+                      </div>
                       <div className="rating">
                         <div className="icon_box">
                           <p>4.5</p>
                           <StarHalfIcon />
                         </div>
-                        <p style={{ marginLeft: "4px" }}>
+                        <p style={{ marginLeft: "4px"}}>
                           192 Ratings & 29 Reviews
                         </p>
                       </div>
@@ -146,6 +147,10 @@ const Details = () => {
                         </p>
                         <p style={{ color: "green" }}>30% off</p>
                       </div>
+                    <div className="description">
+                      <h2>DESCRIPTION</h2>
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem hic inventore assumenda saepe incidunt ut in ipsa reiciendis omnis corrupti! Nulla corporis, tenetur, est nihil nostrum magni consectetur atque repellat totam adipisci amet minus velit molestiae asperiores, voluptatem harum praesentium aut debitis doloremque hic esse! Officiis praesentium exercitationem, mollitia sed voluptatem ipsum. Quos ea a laudantium inventore ullam, nobis assumenda nam consequatur cum ex veniam perspiciatis dolor quibusdam, ratione in mollitia eos quis eveniet autem! Nobis dolore architecto accusantium quidem.</p>
+                    </div>
                     </div>
                   </div>
                 );

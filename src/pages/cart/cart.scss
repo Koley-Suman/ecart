@@ -1,164 +1,246 @@
-.cart_container{
-    width: 100%;
-    height: 100vh;
+.cart_container {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+
+  justify-content: space-evenly;
+  box-sizing: border-box;
+  background-color: rgb(229, 231, 233);
+  .cart_item_box {
+    background-color: white;
+    width: 70%;
+    height: 100%;
     display: flex;
-    
-    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgb(225, 219, 219);
+    padding-top: 14px;
     box-sizing: border-box;
-    .cart_item_box{
-        width: 70%;
+    .cart_item_container {
+      width: 100%;
+      height: 30%;
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 8px;
+      border-bottom: 1px solid rgb(190, 187, 187);
+      font-family: Calibri, sans-serif;
+      .image_container {
+        width: 20%;
         height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 6px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-        0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        padding-top: 14px;
-        box-sizing: border-box;
-        .cart_item_container{
-            width: 100%;
-            height: 30%;
-            display: flex;
-            align-items: center;
-            box-sizing: border-box;
-            padding: 8px;
-            border-bottom: 1px solid gray;
-            font-family: Calibri, sans-serif;
-            .image_container{
-                width: 20%;
-                height: 100%;
-                // background-color: red;
-                .image_box{
-                    width: 100%;
-                    height: 80%;
-                    .image{
-                        width: 100%;
-                        height: 100%;
-                        background-position: center;
-                        background-size: contain;
-                        background-repeat: no-repeat;
-                    }
-                }
-                .increase_decrease_box{
-                    width: 100%;
-                    height: 20%;
-                    // background-color: green;
-                    display: flex;
-                    justify-content: space-evenly;
-                    align-items: center;
-                    button{
-                        color: rgb(104, 101, 101);
-                    }
-                }
-            }
-            .item_details{
-                width: 60%;
-                height: 100%;
-                // background-color: yellow;
-                
-                .item_name{
-                    height: 60%;
-                    width: 90%;
-                    
-                    // background-color: aqua;
-                    font-family: Calibri, sans-serif;
-                    display: flex;
-                    place-items: center;
-                    justify-content: center;
-                }
-                .price{
-                    height: 40%;
-                    width: 100%;
-                    // background-color: blue;
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                    .price_tag{
-                        font-size: x-large;
-                        font-weight: bold;
-                    }
-                }
-            }
-            .delete_box{
-                width: 20%;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-               
-                // background-color: blue;
-                button{
-                    color: rgb(214, 134, 5);
-                }
-            }
-            
-        }
-    }
-    .check_out{
-        width: 19%;
-        height: 50%;
-        // background-color: blue;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-        0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        padding: 14px;
-        font-family: Calibri, sans-serif;
-        .check_out_container{
+        .image_box {
+          width: 100%;
+          height: 80%;
+          .image {
             width: 100%;
             height: 100%;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+          }
+        }
+        .increase_decrease_box {
+          width: 100%;
+          height: 20%;
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          button {
+            color: rgb(104, 101, 101);
+          }
+        }
+      }
+      .item_details {
+        width: 60%;
+        height: 100%;
+        .item_name {
+          height: 60%;
+          width: 90%;
+          font-family: Calibri, sans-serif;
+          display: flex;
+          place-items: center;
+          justify-content: center;
+        }
+        .price {
+          height: 40%;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          .price_tag {
+            font-size: x-large;
+            font-weight: bold;
+          }
+        }
+      }
+      .delete_box {
+        width: 20%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        button {
+          color: rgb(214, 134, 5);
+        }
+      }
+    }
+  }
+  .check_out {
+    width: 19%;
+    height: 50%;
+    border: 1px solid rgb(206, 203, 203);
+    padding: 14px;
+    font-family: Calibri, sans-serif;
+    background-color: white;
+    .check_out_container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      h3 {
+        color: rgb(168, 163, 163);
+      }
+      .checkout_box {
+        width: 100%;
+        height: 70%;
+        .price_name {
+          height: 90%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-evenly;
+          .p_name_box {
+            width: 100%;
+            height: 20%;
+            // background-color: blue;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            h3{
-                color: rgb(168, 163, 163);
-            }
-            .checkout_box{
-                width: 100%;
-                height: 80%;
-                
-                .price_name{
-                    height: 80%;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: space-evenly;
-                    .p_name_box{
-                        width: 100%;
-                        height: 15%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-                        font-size: large
-                    }
-                }
-                .total_price{
-                    width: 100%;
-                    height: 15%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    font-size: x-large;
-                    font-weight: 600;
-                }
-            }
-            .check_button{
-                width: 100%;
-                height: 12%;
-                background-color: rgb(149, 0, 255);
-                display:flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                color: white;
-                font-size: larger;
-                transition: all 0.2s ease;
-                &:hover{
-                    background-color: rgb(111, 4, 187);
-                }
-            }
-            
+            font-size: large;
+          }
         }
-        
+      }
+      .total_price_checkout_button {
+        width: 100%;
+        height: 30%;
+        .total_price {
+          width: 100%;
+          height: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-size: x-large;
+          font-weight: bolder;
+          // background-color: red;
+        }
+        .check_button {
+          width: 100%;
+          height: 50%;
+          background-color: rgb(149, 0, 255);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          color: white;
+          font-size: larger;
+          transition: all 0.2s ease;
+          &:hover {
+            background-color: rgb(111, 4, 187);
+          }
+        }
+      }
     }
+  }
+}
+
+@media screen and (max-width: 815px) {
+  .cart_container {
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    .cart_item_box {
+      width: 100%;
+      height: 60%;
+      .cart_item_container {
+        width: 100%;
+        .image_container {
+          width: 30%;
+          .image_box {
+            height: 70%;
+          }
+          .increase_decrease_box {
+            height: 30%;
+            button {
+              width: 20%;
+            }
+            div {
+              width: 20px;
+              height: 20px;
+              min-height: 20px;
+              min-width: 20px;
+            }
+          }
+        }
+        .item_details {
+          width: 60%;
+          box-sizing: border-box;
+          padding: 6px;
+          .item_name {
+            width: 100%;
+            height: 60%;
+            p {
+              width: 100%;
+              height: 100%;
+              font-size: larger;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+          }
+          .price {
+            height: 40%;
+            justify-content: flex-start;
+          }
+        }
+        .delete_box {
+          width: 10%;
+        }
+      }
+    }
+    .check_out {
+      box-sizing: border-box;
+      width: 100%;
+      height: 40%;
+      .check_out_container {
+        width: 100%;
+        .checkout_box {
+          width: 100%;
+          height: 70%;
+          .price_name {
+            width: 100%;
+            height: 90%;
+            .p_name_box {
+              height: 16%;
+            }
+          }
+        }
+        .total_price_checkout_button {
+          width: 100%;
+          height: 30%;
+          position: sticky;
+          bottom: 0px;
+          .total_price {
+            background-color: white;
+          }
+        }
+      }
+    }
+  }
 }

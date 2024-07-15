@@ -81,7 +81,6 @@ const Cart = () => {
           <IconButton onClick={() => dispatch(removeCart(item))}>
             <DeleteOutlinedIcon sx={{ fontSize: 35 }} />
           </IconButton>
-          
         </div>
       </div>
     );
@@ -110,18 +109,20 @@ const Cart = () => {
                 </div>
                 <div className="p_name_box">
                   <p>Secured Packaging Fee</p>
-                  <p>$2</p>
+                  <p>$0</p>
                 </div>
               </div>
               <Divider />
+            </div>
+            <div className="total_price_checkout_button">
               <div className="total_price">
                 <p> Total Amount</p>
-                <p>${totalprice + 2}</p>
+                <p>${totalprice}</p>
               </div>
-            </div>
               <div className="check_button">
                 <PaymentForm />
               </div>
+            </div>
           </div>
         </div>
       </div>

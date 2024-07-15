@@ -96,10 +96,10 @@
             color: rgb(31, 29, 29);
             font-family: Calibri, sans-serif;
           }
-          a{
+          a {
             text-decoration: none;
             width: 40%;
-            max-width: 150px;;
+            max-width: 150px;
             display: flex;
             align-items: center;
             justify-content: space-evenly;
@@ -116,7 +116,18 @@
       height: 100%;
       box-sizing: border-box;
       // background-color: yellow;
-
+      .name {
+        width: 100%;
+        box-sizing: border-box;
+        padding-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        h2 {
+          width: 90%;
+          text-align: justify;
+        }
+      }
       .rating {
         width: 100%;
         display: flex;
@@ -128,6 +139,7 @@
         .icon_box {
           width: 10%;
           max-width: 60px;
+          min-width: 60px;
           background-color: green;
           display: flex;
           align-items: center;
@@ -135,6 +147,10 @@
           color: whitesmoke;
           font-family: Calibri, sans-serif;
           border-radius: 4px;
+          box-sizing: border-box;
+          p {
+            font-size: large;
+          }
         }
       }
 
@@ -143,6 +159,7 @@
         align-items: center;
         justify-content: space-between;
         width: 25%;
+        min-width: 150px;
         font-family: Calibri, sans-serif;
 
         p {
@@ -152,6 +169,19 @@
         .price_tag {
           font-weight: bold;
           font-size: x-large;
+        }
+      }
+      .description{
+        width: 80%;
+        margin-top: 10px;
+        h2{
+          color: rgb(57, 55, 55);
+        }
+        p{
+          
+          width: 100%;
+          display: flex;
+          text-align: justify;
         }
       }
     }
@@ -173,6 +203,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        gap: 8px;
         .image_section {
           width: 100%;
           height: 100%;
@@ -193,13 +224,42 @@
             width: 80%;
           }
         }
-        button {
-          width: 80%;
+        .button_container {
+          width: 100%;
+
+          .button {
+            width: 80%;
+            p {
+              width: 100%;
+              max-width: 160px;
+            }
+          }
         }
       }
       .details {
+        box-sizing: border-box;
+        padding: 0% 4%;
         width: 100%;
         font-size: 70%;
+        .rating{
+          p{
+            font-size: 14px;
+          }
+        }
+        h4{
+          font-size: large;
+        }
+        // .price{
+        //   // width: 50%;
+        //   // max-width: ;
+        // }
+        .description{
+          width: 100%;
+          p{
+            font-size: small;
+            width: 90%;
+          }
+        }
       }
     }
   }

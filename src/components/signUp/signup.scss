@@ -2,11 +2,10 @@
   width: 50vw;
   height: 75vh;
   padding: 14px;
-  // background-color: yellow;
+  background-color: white;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  border: 0.5px solid gray;
   border-radius: 14px;
   .sign-up-container {
     width: 50%;
@@ -24,11 +23,11 @@
       align-items: center;
       justify-content: center;
       gap: 25px;
-      input{
+      input {
         font-size: 15px;
       }
 
-      .divider-box{
+      .divider-box {
         width: 100%;
         height: inherit;
         padding: 6px;
@@ -36,12 +35,22 @@
         align-items: center;
         justify-content: space-around;
 
-        .divider{
+        .divider {
           width: 20%;
           height: 0.5px;
           background-color: rgb(203, 34, 34);
         }
       }
+    }
+  }
+}
+@media screen and (max-width: 815px) {
+  .sign-up-box {
+    width: 90%;
+    box-sizing: border-box;
+    .sign-up-container {
+      width: 100%;
+      padding: 0px;
     }
   }
 }

@@ -3,7 +3,7 @@ import "./App.css";
 import Homepage from "./pages/homepage/homepage";
 import Navigation from "./components/navigation/navigation";
 import Categoripage from "./pages/categoripage/categoripage";
-import Cart from "./pages/cart/cart";
+
 import Details from "./pages/details/details";
 import Authentication from "./pages/authentication/authentication";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,12 +12,15 @@ import { useEffect } from "react";
 import { setCurrentUser } from "./store/user-slice";
 
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { onAuthStateChanged_Listener } from "./auth/auth";
-import { fetchCarts } from "./store/slice";
+
 import Cartcomponent from "./components/cart.component/cart.component";
 import PaymentForm from "./components/payment.component/payment.component";
 import Payment_success from "./pages/payment_sucess/payment_success";
 import Payment_cancel from "./pages/payment_cancel/payment_cancel";
+import { onAuthStateChanged_Listener } from "./auth/auth";
+import { fetchCarts, fetchOrder } from "./store/slice";
+import Order from "./pages/order/order";
+import OrderComponent from "./components/order.component/order.component";
 function App() {
   const catagoris = [
     {
@@ -83,8 +86,6 @@ function App() {
   ];
 
   const dispatch = useDispatch();
- 
-
   const auth = getAuth();
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -95,14 +96,15 @@ function App() {
     });
     return unsubscribe;
   }, []);
-  
+
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged_Listener((user) => {
-      if (user) {
-        dispatch(fetchCarts(user));
-      }
-    });
-    return unsubscribe;
+    setTimeout(() => {
+      onAuthStateChanged_Listener((user) => {
+        if (user) {
+          dispatch(fetchCarts(user));
+        }
+      });
+    }, 3000);
   }, [dispatch]);
 
   return (
@@ -111,12 +113,13 @@ function App() {
         <Route path="/" element={<Navigation />}>
           <Route index element={<Homepage categori={catagoris} />} />
           <Route path="cart" element={<Cartcomponent />} />
-          <Route path="checkOut" element={<PaymentForm/>}/>
-          <Route path="success" element={<Payment_success/>}/>
-          <Route path="cancel" element={<Payment_cancel/>}/>
+          <Route path="checkOut" element={<PaymentForm />} />
+          <Route path="success" element={<Payment_success />} />
+          <Route path="cancel" element={<Payment_cancel />} />
           <Route path="categori/:categori/:productId" element={<Details />} />
           <Route path="categori/:categori" element={<Categoripage />} />
           <Route path="authentication/*" element={<Authentication />} />
+          <Route path="order" element={<OrderComponent />} />
         </Route>
       </Routes>
     </>
