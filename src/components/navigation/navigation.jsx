@@ -44,12 +44,10 @@ const Navigation = () => {
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
-  const signOut =(popupState)=>{
-    signOutUser()
-    popupState.close
-  }
-
-
+  const signOut = (popupState) => {
+    signOutUser();
+    popupState.close;
+  };
 
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
@@ -61,10 +59,10 @@ const Navigation = () => {
           <Link to="/">HOME</Link>
         </li>
         <li>
-          <Link to="authentication">SIGN IN</Link>
+          <Link to="/cart">CART</Link>
         </li>
         <li>
-          <Link to="order">ORDER</Link>
+          <Link to="/order">ORDER</Link>
         </li>
       </ul>
     </Box>
@@ -101,18 +99,16 @@ const Navigation = () => {
                 {(popupState) => (
                   <>
                     <Avatar
-                     sx={{ bgcolor: deepOrange[500],width:35,height:35 }}
+                      sx={{ bgcolor: deepOrange[500], width: 35, height: 35 }}
                       {...bindTrigger(popupState)}
                     >
                       {user.displayName.toUpperCase()[0]}
                     </Avatar>
                     <Menu {...bindMenu(popupState)}>
-                      {/* <MenuItem onClick={popupState.close}>Profile</MenuItem> */}
-                      {/* <MenuItem onClick={popupState.close}>My account</MenuItem> */}
                       <MenuItem>
                         <Typography variant="h6">{user.displayName}</Typography>
                       </MenuItem>
-                      <MenuItem onClick={()=>signOut(popupState)}>
+                      <MenuItem onClick={() => signOut(popupState)}>
                         <ListItemIcon>
                           <Logout fontSize="small" />
                         </ListItemIcon>
@@ -124,7 +120,7 @@ const Navigation = () => {
               </PopupState>
             ) : (
               <li>
-                <Link to="authentication">SIGN IN</Link>
+                <Link to="/authentication">SIGN IN</Link>
               </li>
             )}
 
@@ -151,13 +147,33 @@ const Navigation = () => {
               <h2>ECART</h2>
             </div>
             {user ? (
-              <Avatar sx={{ bgcolor: deepOrange[500],width:35,height:35 }} >
-                {user.displayName.toUpperCase()[0]}
-              </Avatar>
+              <PopupState variant="popover" popupId="demo-popup-menu">
+                {(popupState) => (
+                  <>
+                    <Avatar
+                      sx={{ bgcolor: deepOrange[500], width: 35, height: 35 }}
+                      {...bindTrigger(popupState)}
+                    >
+                      {user.displayName.toUpperCase()[0]}
+                    </Avatar>
+                    <Menu {...bindMenu(popupState)}>
+                      <MenuItem>
+                        <Typography variant="h6">{user.displayName}</Typography>
+                      </MenuItem>
+                      <MenuItem onClick={() => signOut(popupState)}>
+                        <ListItemIcon>
+                          <Logout fontSize="small" />
+                        </ListItemIcon>
+                        Logout
+                      </MenuItem>
+                    </Menu>
+                  </>
+                )}
+              </PopupState>
             ) : (
               <ul className="links">
                 <li>
-                  <Link to="/">HOME</Link>
+                  <Link to="/authentication">SIGN IN</Link>
                 </li>
               </ul>
             )}

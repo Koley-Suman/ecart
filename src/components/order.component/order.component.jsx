@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Order from "../../pages/order/order";
 import { fetchOrder } from "../../store/slice";
 import { onAuthStateChanged_Listener } from "../../auth/auth";
+import Empty_order from "../empty_order/empty_order";
 
 const OrderComponent = () => {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ const OrderComponent = () => {
     });
   }, [dispatch]);
   console.log(orderItem.length);
-  const isOrder = orderItem.length != 0 ? <Order /> : <h2>NO ORDER YET !</h2>;
+  const isOrder = orderItem.length != 0 ? <Order /> : <Empty_order/>;
   return <>{isOrder}</>;
 };
 

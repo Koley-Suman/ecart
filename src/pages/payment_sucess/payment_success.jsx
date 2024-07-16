@@ -31,7 +31,9 @@ const Payment_success = () => {
           <div className="animation">
             <Lottie animationData={animationData} loop={false} autoplay />
           </div>
-          <p>Order Successful !</p>
+        </div>
+        <div className="order_message">
+          <p>ORDER SUCCESSFUL !</p>
         </div>
         <div className="button_container">
           <div className="button" onClick={()=>navigate('/order')}>
