@@ -2,3 +2,29 @@
     padding: 0px;
     margin: 0px;
 }
+/* Apply to the whole page */
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden; /* Hide scrollbars */
+  }
+  
+  body {
+    overflow-y: scroll; /* Enable vertical scrolling */
+  }
+  
+  /* Webkit browsers (Chrome, Safari) */
+  body::-webkit-scrollbar {
+    width: 0; /* Remove scrollbar width */
+    background: transparent; /* Optional: Remove scrollbar background */
+  }
+  
+  /* Firefox */
+  body {
+    scrollbar-width: none; /* Hide scrollbar */
+  }
+  
+  /* IE and Edge */
+  body {
+    -ms-overflow-style: none; /* Hide scrollbar */
+  }

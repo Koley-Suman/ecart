@@ -1,23 +1,76 @@
 .payment_cancel {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 153, 0, 0.517);
+
+  .animation_container {
+    width: 50%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .animation {
+      width: 50%;
+      height: 80%;
+      div {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  .order_message {
     width: 100%;
-    height: 90vh;
+    height: 10%;
+    display: grid;
+    place-items: center;
+    p {
+      font-size: xx-large;
+      font-family: Calibri, sans-serif;
+      color: rgb(12, 105, 181);
+    }
+  }
+  .button_container {
+    width: 50%;
+    height: 30%;
+    // background-color:blue;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(255, 153, 0, 0.517);
-  
-    .animation_container {
+    justify-content: center;
+    gap: 8px;
+
+    .button {
       width: 50%;
-      height: 50%;
+
+      .mui_button {
+        width: 100%;
+        background-color: rgb(149, 0, 255);
+        transition: all 0.3s ease;
+        &:hover {
+          background-color: rgb(90, 5, 150);
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 815px) {
+  .payment_success {
+    .animation_container {
+      width: 100%;
+      height: 40%;
       display: flex;
       align-items: center;
-      justify-content: center;
       .animation {
-        width: 50%;
-        height: 80%;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        place-items: center;
         div {
           width: 100%;
-          height: 100%;
+          height: 50%;
         }
       }
     }
@@ -33,65 +86,8 @@
       }
     }
     .button_container {
-      width: 50%;
-      height: 30%;
-      // background-color:blue;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-  
-      .button {
-        width: 50%;
-  
-        .mui_button {
-          width: 100%;
-          background-color: rgb(149, 0, 255);
-          transition: all 0.3s ease;
-          &:hover {
-            background-color: rgb(90, 5, 150);
-          }
-        }
-      }
+      width: 100%;
+      height: 20%;
     }
   }
-  @media screen and (max-width: 815px) {
-    .payment_success {
-      .animation_container {
-        width: 100%;
-        height: 40%;
-        display: flex;
-  
-        align-items: center;
-        .animation {
-          width: 100%;
-          height: 100%;
-  
-          display: grid;
-          place-items: center;
-          div {
-            width: 100%;
-            height: 50%;
-          }
-        }
-      }
-      .order_message {
-        width: 100%;
-        height: 10%;
-        display: grid;
-        place-items: center;
-        p {
-          font-size: xx-large;
-          font-family: Calibri, sans-serif;
-          color: rgb(12, 105, 181);
-        }
-      }
-      .button_container {
-        width: 100%;
-        height: 20%;
-        // background-color: red;
-      }
-    }
-  }
-  
+}
