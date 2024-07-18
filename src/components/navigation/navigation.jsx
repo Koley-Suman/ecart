@@ -46,7 +46,7 @@ const Navigation = () => {
   };
   const signOut = (popupState) => {
     signOutUser();
-    popupState.close;
+    popupState.close();
   };
 
   const DrawerList = (

@@ -49,6 +49,18 @@
       }
     }
   }
+  .side_image{
+    width: 50%;
+    height: 100%;
+    .image{
+      width: 100%;
+      height: 100%;
+      background-image: url(../../../public/auth.jpg);
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
 }
 
 @media screen and (max-width: 815px) {
@@ -67,6 +79,9 @@
           width: 90%;
           height: 80%;
         }
+      }
+      .side_image{
+        display: none;
       }
     }
   }

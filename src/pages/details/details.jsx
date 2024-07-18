@@ -10,6 +10,7 @@ import { onAuthStateChanged_Listener } from "../../auth/auth";
 const Details = () => {
   const product = useSelector((state) => state.carts.products);
   const carts = useSelector((state) => state.carts.carts);
+  const user = useSelector((state) => state.user.currentUser);
   const params = useParams();
   const Navigate = useNavigate();
   const dispatch = useDispatch();
@@ -62,7 +63,12 @@ const Details = () => {
       if (iscart == true) {
         Navigate("/cart");
       }
-      dispatch(additemtoCart(cartItem));
+      if (!user) {
+        Navigate("/authentication");
+      }
+      if (user) {
+        dispatch(additemtoCart(cartItem));
+      }
     };
 
     return (
@@ -128,7 +134,7 @@ const Details = () => {
                           <p>4.5</p>
                           <StarHalfIcon />
                         </div>
-                        <p style={{ marginLeft: "4px"}}>
+                        <p style={{ marginLeft: "4px" }}>
                           192 Ratings & 29 Reviews
                         </p>
                       </div>
@@ -147,10 +153,23 @@ const Details = () => {
                         </p>
                         <p style={{ color: "green" }}>30% off</p>
                       </div>
-                    <div className="description">
-                      <h2>DESCRIPTION</h2>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem hic inventore assumenda saepe incidunt ut in ipsa reiciendis omnis corrupti! Nulla corporis, tenetur, est nihil nostrum magni consectetur atque repellat totam adipisci amet minus velit molestiae asperiores, voluptatem harum praesentium aut debitis doloremque hic esse! Officiis praesentium exercitationem, mollitia sed voluptatem ipsum. Quos ea a laudantium inventore ullam, nobis assumenda nam consequatur cum ex veniam perspiciatis dolor quibusdam, ratione in mollitia eos quis eveniet autem! Nobis dolore architecto accusantium quidem.</p>
-                    </div>
+                      <div className="description">
+                        <h2>DESCRIPTION</h2>
+                        <p>
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. Autem hic inventore assumenda saepe incidunt ut
+                          in ipsa reiciendis omnis corrupti! Nulla corporis,
+                          tenetur, est nihil nostrum magni consectetur atque
+                          repellat totam adipisci amet minus velit molestiae
+                          asperiores, voluptatem harum praesentium aut debitis
+                          doloremque hic esse! Officiis praesentium
+                          exercitationem, mollitia sed voluptatem ipsum. Quos ea
+                          a laudantium inventore ullam, nobis assumenda nam
+                          consequatur cum ex veniam perspiciatis dolor
+                          quibusdam, ratione in mollitia eos quis eveniet autem!
+                          Nobis dolore architecto accusantium quidem.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 );

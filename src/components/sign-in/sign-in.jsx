@@ -79,6 +79,9 @@ const SignIn = () => {
         <p>Haven't any account <Link to='signUp'>sign up</Link></p>
         </form>
       </div>
+      <div className="side_image">
+        <div className="image"></div>
+      </div>
     </div>
   );
 };

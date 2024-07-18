@@ -42,7 +42,6 @@ const Signup = () => {
         });
         await createUserFromAuth(user);
         resetinput();
-        
       } catch (error) {
         if (error.code === "auth/email-already-in-use") {
           alert("user already have an account.");
@@ -54,6 +53,9 @@ const Signup = () => {
   };
   return (
     <div className="sign-up-box">
+      <div className="side_image">
+        <div className="image"></div>
+      </div>
       <div className="sign-up-container">
         <form onSubmit={signup} className="sign-up-form">
           <TextField

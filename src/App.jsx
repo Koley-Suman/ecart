@@ -89,10 +89,8 @@ function App() {
   const auth = getAuth();
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        dispatch(setCurrentUser(user));
-        console.log(user);
-      }
+      dispatch(setCurrentUser(user));
+      console.log(user);
     });
     return unsubscribe;
   }, []);
