@@ -63,7 +63,11 @@ body {
     align-items: center;
     position: relative;
     .backgroundTitle {
-      font-size: x-large;
+      div{
+        font-size: 44px;
+        font-family:sans-serif;
+        font-weight: bolder;
+      }
     }
     img {
       position: absolute;
@@ -78,7 +82,7 @@ body {
       right: 0px;
     }
 
-    .Shoes {
+    .Sneakers {
       position: absolute;
       bottom: 0%;
       right: 0%;
@@ -154,8 +158,8 @@ body {
         }
         .image {
           .backgroundTitle {
-            h1 {
-              font-size: 90%;
+            div {
+              font-size: 100%;
             }
           }
           img {

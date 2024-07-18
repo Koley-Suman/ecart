@@ -149,7 +149,7 @@ const Details = () => {
                             color: "gray",
                           }}
                         >
-                          $3499
+                          ${item.p_price}
                         </p>
                         <p style={{ color: "green" }}>30% off</p>
                       </div>

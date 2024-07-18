@@ -3,16 +3,18 @@
   height: 90vh;
   display: flex;
   flex-wrap: wrap;
+  background-color: rgb(242, 243, 243);
 
   .productCard {
     box-sizing: border-box;
     width: 15%;
     height: 45%;
-    border: 1px solid rgb(196, 192, 192);
+    border: 1px solid rgb(230, 229, 229);
     margin-left: 14px;
     margin-right: 14px;
     border-radius: 6px;
     padding: 10px;
+    background-color: white;
     .description {
       height: 30%;
 

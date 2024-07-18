@@ -32,13 +32,13 @@ const Homepage = ({ categori }) => {
               <div className="image">
                 <div className="backgroundTitle">
                   {e.name == "Womens" || e.name == "Mens" ? (
-                    <h1 style={{ color: `${e.color}` }}>
+                    <div style={{ color: `${e.color}` }}>
                       Best product for {e.name}
-                    </h1>
+                    </div>
                   ) : (
-                    <h1 style={{ color: `${e.color}` }}>
+                    <div style={{ color: `${e.color}` }}>
                       {e.name.toUpperCase()}
-                    </h1>
+                    </div>
                   )}
                 </div>
                 <img src={e.imageurl} alt="" className={`${e.name}`} />

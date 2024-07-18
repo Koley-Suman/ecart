@@ -40,7 +40,7 @@ const Categoripage = () => {
                         color: "gray",
                       }}
                     >
-                      $3499
+                      ${items.p_price}
                     </p>
                     <p style={{ color: "green" }}>30% off</p>
                   </div>

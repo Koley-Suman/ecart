@@ -171,7 +171,14 @@ const initialState = {
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
-  reducers: {},
+  reducers: {
+    setCart(state,action){
+      state.carts=action.payload
+    },
+    setOrder(state,action){
+      state.order=action.payload
+    }
+  },
 
   extraReducers: (builder) => {
     builder
@@ -235,5 +242,5 @@ export const cartSlice = createSlice({
   },
 });
 
-
+export const {setCart,setOrder} = cartSlice.actions;
 export default cartSlice.reducer;

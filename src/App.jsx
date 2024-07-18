@@ -49,7 +49,7 @@ function App() {
     },
     {
       id: 4,
-      name: "Shoes",
+      name: "Sneakers",
       imageurl: "./photos/shoes.png",
       rout: "shop/sneakers",
       size: "semilarge",

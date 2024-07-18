@@ -15,15 +15,17 @@ import {
   Typography,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import DehazeIcon from "@mui/icons-material/Dehaze";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import CloseIcon from "@mui/icons-material/Close";
 import { deepOrange, deepPurple } from "@mui/material/colors";
 import { Logout } from "@mui/icons-material";
 import { signOutUser } from "../../auth/auth";
+import { setCart } from "../../store/slice";
 
 const Navigation = () => {
+  const dispatch = useDispatch();
   const carts = useSelector((state) => state.carts.carts);
   const user = useSelector((state) => state.user.currentUser);
   console.log(carts);
@@ -46,6 +48,8 @@ const Navigation = () => {
   };
   const signOut = (popupState) => {
     signOutUser();
+    dispatch(setCart([]));
+    dispatch(setOrder([]));
     popupState.close();
   };
 
