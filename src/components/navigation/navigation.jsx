@@ -23,6 +23,7 @@ import { deepOrange, deepPurple } from "@mui/material/colors";
 import { Logout } from "@mui/icons-material";
 import { signOutUser } from "../../auth/auth";
 import { setCart } from "../../store/slice";
+import Footer from "../footer/footer";
 
 const Navigation = () => {
   const dispatch = useDispatch();
@@ -207,6 +208,7 @@ const Navigation = () => {
         </nav>
       )}
       <Outlet />
+      {/* <Footer/> */}
     </>
   );
 };

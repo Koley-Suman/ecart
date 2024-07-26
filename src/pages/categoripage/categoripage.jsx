@@ -11,6 +11,7 @@ const Categoripage = () => {
   const navigate = useNavigate();
   console.log(params);
   console.log(products);
+  
 
   return (
     <div className="product_container">

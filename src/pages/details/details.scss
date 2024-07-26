@@ -1,7 +1,12 @@
+html{
+  scroll-behavior: smooth;
+}
+
 .details_container {
   width: 100vw;
   height: 90vh;
   font-family: Calibri, sans-serif;
+  
 
   .details_box {
     width: 100%;

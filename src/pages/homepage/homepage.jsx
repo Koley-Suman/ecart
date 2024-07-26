@@ -12,7 +12,9 @@ const Homepage = ({ categori }) => {
         <div className="side1">
           <h1>Buy The Best Products</h1>
         </div>
-        <div className="side2"></div>
+        <div className="side2">
+          <div className="shoping_model"></div>
+        </div>
       </div>
       <div className="lastframe">
         {categori.map((e, i) => {
