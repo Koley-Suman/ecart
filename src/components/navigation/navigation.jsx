@@ -168,7 +168,7 @@ const Navigation = () => {
                       sx={{ bgcolor: deepOrange[500], width: 35, height: 35 }}
                       {...bindTrigger(popupState)}
                     >
-                      A
+                      {logoUser}
                     </Avatar>
                     <Menu {...bindMenu(popupState)}>
                       <MenuItem>
