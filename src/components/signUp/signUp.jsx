@@ -6,7 +6,7 @@ import { Alert, Button, TextField } from "@mui/material";
 
 import "./signup.scss";
 import GoogleIcon from "@mui/icons-material/Google";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const initial = {
@@ -17,6 +17,7 @@ const Signup = () => {
   };
   const [cruser, setCruser] = useState(initial);
   const { username, email, password, confirmPassword } = cruser;
+  const navigate = useNavigate();
   let handelchange = (e) => {
     setCruser({ ...cruser, [e.target.name]: e.target.value });
   };
@@ -42,6 +43,7 @@ const Signup = () => {
         });
         await createUserFromAuth(user);
         resetinput();
+        navigate('/')
       } catch (error) {
         if (error.code === "auth/email-already-in-use") {
           alert("user already have an account.");

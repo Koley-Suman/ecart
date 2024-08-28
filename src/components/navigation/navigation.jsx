@@ -30,9 +30,18 @@ const Navigation = () => {
   const carts = useSelector((state) => state.carts.carts);
   const user = useSelector((state) => state.user.currentUser);
   console.log(carts);
+  // console.log("hello navber"+ user!=null?user.displayName:"not");
+
   const count = carts.reduce((total, cart) => total + cart.quantity, 0);
 
   const [width, setwidth] = useState(window.innerWidth);
+  const [logoUser,setLogoUser]=useState('');
+
+  useEffect(()=>{
+    setTimeout(() => {
+      setLogoUser(user.displayName[0].toUpperCase())
+    }, 3000);
+  })
 
   useEffect(() => {
     function handleWidth() {
@@ -99,7 +108,7 @@ const Navigation = () => {
             <li>
               <Link to="order">ORDER</Link>
             </li>
-            {user ? (
+            {user != null ? (
               <PopupState variant="popover" popupId="demo-popup-menu">
                 {(popupState) => (
                   <>
@@ -107,7 +116,7 @@ const Navigation = () => {
                       sx={{ bgcolor: deepOrange[500], width: 35, height: 35 }}
                       {...bindTrigger(popupState)}
                     >
-                      {user.displayName.toUpperCase()[0]}
+                      {logoUser}
                     </Avatar>
                     <Menu {...bindMenu(popupState)}>
                       <MenuItem>
@@ -151,7 +160,7 @@ const Navigation = () => {
             <div className="logo">
               <h2>ECART</h2>
             </div>
-            {user ? (
+            {user != null ? (
               <PopupState variant="popover" popupId="demo-popup-menu">
                 {(popupState) => (
                   <>
@@ -159,7 +168,7 @@ const Navigation = () => {
                       sx={{ bgcolor: deepOrange[500], width: 35, height: 35 }}
                       {...bindTrigger(popupState)}
                     >
-                      {user.displayName.toUpperCase()[0]}
+                      A
                     </Avatar>
                     <Menu {...bindMenu(popupState)}>
                       <MenuItem>
