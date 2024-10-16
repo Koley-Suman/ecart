@@ -38,9 +38,10 @@ body {
         width: 70%;
         height: 90%;
         background-image: url(../../../public/shopping_model.png);
-        background-position: center;
+        background-position:center bottom;
         background-repeat: no-repeat;
         background-size: contain;
+        filter: drop-shadow(0.45rem 0.45rem 0.5rem rgba(14, 14, 14, 0.5));
       }
     }
   }
@@ -53,7 +54,7 @@ body {
   }
 }
 .categories_card {
-  cursor:pointer;
+  cursor: pointer;
   width: 25%;
   height: 40vh;
   margin-top: 30px;
@@ -172,7 +173,7 @@ body {
         .shoping_model {
           height: 70%;
           width: 70%;
-          background-position: 100%;
+          background-position:center bottom;
         }
       }
     }
