@@ -25,7 +25,7 @@ const PaymentForm = () => {
 
       const data = await response.json();
       if (response.ok) {
-        console.log("checkout sucessful", data);
+        console.log("checkout sucessful", data.url);
         window.location = data.url;
       } else {
         console.error("error creating checkout session", data.error);
