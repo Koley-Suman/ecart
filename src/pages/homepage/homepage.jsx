@@ -2,6 +2,7 @@ import React from "react";
 import "./homepage.scss";
 
 import { useNavigate } from "react-router-dom";
+import Anime_text from "./animation_text/animation_text";
 
 const Homepage = ({ categori }) => {
   const navigate = useNavigate();
@@ -10,7 +11,8 @@ const Homepage = ({ categori }) => {
     <div className="homepage">
       <div className="firstframe">
         <div className="side1">
-          <h1>Buy The Best Products</h1>
+          {/* <h1>Buy The Best Products</h1> */}
+          <Anime_text/>
         </div>
         <div className="side2">
           <div className="shoping_model"></div>
