@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Container, Grid, Typography, Link, TextField, Button } from '@mui/material';
 import { Facebook, Twitter, Instagram, LinkedIn } from '@mui/icons-material';
-import './Footer.scss'; // Import the SCSS file
+import './footer.scss'; // Import the SCSS file
 
 const Footer = () => {
     const [email, setEmail] = useState("");
