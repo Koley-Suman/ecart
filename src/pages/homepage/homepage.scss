@@ -1,6 +1,7 @@
 body {
   padding: 0px;
   margin: 0px;
+  
 }
 .homepage {
   width: 100%;
@@ -11,6 +12,7 @@ body {
   justify-content: space-between;
   padding: 0px;
   margin: 0px;
+  
 
   .firstframe {
     width: 100%;
@@ -49,6 +51,7 @@ body {
     width: 90%;
     height: auto;
     display: flex;
+    // background-color: yellow;z
     flex-wrap: wrap;
     justify-content: space-around;
   }
@@ -145,13 +148,13 @@ body {
 @media screen and (max-width: 815px) {
   .homepage {
     width: 100vw;
-    height: 150vh;
+    height: auto;
     .firstframe {
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 100%;
-      height: 40%;
+      height: 50vh;
       position: relative;
       .side1 {
         position: absolute;
@@ -179,10 +182,10 @@ body {
     }
     .lastframe {
       width: 100%;
-      height: 70%;
+      overflow: hidden;
       .categories_card {
-        width: 40%;
-        height: 25%;
+        width: 45%;
+        height: 25vh;
         margin-top: 30px;
         border-radius: 16px;
         h2 {

@@ -21,6 +21,7 @@ import { onAuthStateChanged_Listener } from "./auth/auth";
 import { fetchCarts, fetchOrder } from "./store/slice";
 import Order from "./pages/order/order";
 import OrderComponent from "./components/order.component/order.component";
+import Footer from "./components/footer/footer";
 function App() {
   const catagoris = [
     {
@@ -120,6 +121,7 @@ function App() {
           <Route path="order" element={<OrderComponent />} />
         </Route>
       </Routes>
+      <Footer/>
     </>
   );
 }
