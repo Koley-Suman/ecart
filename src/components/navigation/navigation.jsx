@@ -39,7 +39,9 @@ const Navigation = () => {
 
   useEffect(()=>{
     setTimeout(() => {
-      setLogoUser(user.displayName[0].toUpperCase())
+      if(user!=null){
+        setLogoUser(user.displayName[0].toUpperCase())
+      }
     }, 3000);
   })
 

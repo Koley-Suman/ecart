@@ -22,6 +22,7 @@ import { fetchCarts, fetchOrder } from "./store/slice";
 import Order from "./pages/order/order";
 import OrderComponent from "./components/order.component/order.component";
 import Footer from "./components/footer/footer";
+
 function App() {
   const catagoris = [
     {
@@ -119,6 +120,8 @@ function App() {
           <Route path="categori/:categori" element={<Categoripage />} />
           <Route path="authentication/*" element={<Authentication />} />
           <Route path="order" element={<OrderComponent />} />
+          {/* <Route path="order" element={<BoxComponent/>} /> */}
+          {/* <Route path="ani" element={<BoxComponent/>} /> */}
         </Route>
       </Routes>
       <Footer/>
